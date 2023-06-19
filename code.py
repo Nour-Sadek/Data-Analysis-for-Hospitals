@@ -57,3 +57,27 @@ This column contains the indexes of the tables. This column is not needed for
 the practical purposes of this project, so we will delete it in this stage.
 
 """
+
+# Changing the names of some of the columns so they match those in the general
+# hospital DataFrame
+
+prenatal_df.rename(columns={'HOSPITAL': 'hospital',
+                            'Sex': 'gender',}, inplace=True)
+sports_df.rename(columns={'Hospital': 'hospital',
+                          'Male/female': 'gender'}, inplace=True)
+
+# Merging the datasets into one
+
+all_hospitals_df = pd.concat([general_df, prenatal_df, sports_df],
+                             ignore_index=True)
+
+# Deleting the 'Unnamed: 0' column
+
+all_hospitals_df.drop(columns='Unnamed: 0',
+                      inplace=True)
+
+# Printing out the merged DataFrame <all_hospitals_df>
+
+print('A sample of 20 rows from the merged DataFrame that contains data from all\
+ three hospitals:')
+print(all_hospitals_df.sample(n=20), end='\n\n')
