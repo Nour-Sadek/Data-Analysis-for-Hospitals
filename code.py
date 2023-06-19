@@ -37,3 +37,23 @@ print(prenatal_df.head(20), end='\n\n')
 print('The first 20 rows of the dataset from the sports hospital:')
 print(sports_df.head(20), end='\n\n')
 
+"""Stage 2: Merge them!
+
+Description
+
+The datasets are uploaded but are somewhat difficult to work with. They are 
+divided into three parts, and the column names are different: HOSPITAL and Sex 
+in the prenatal, Hospital and Male/female in the sports facility. We cannot 
+study our data in full and perform statistical calculations. It also stands in 
+the way of good visualization.
+
+Objectives
+
+In this stage, we will change the column names and merge our datasets into one.
+All column names in the sports and prenatal tables must match the column names 
+in the general table. The three datasets will be merged in the following order:
+general, prenatal, sports. After merging, a side Unnamed: 0 column will appear. 
+This column contains the indexes of the tables. This column is not needed for 
+the practical purposes of this project, so we will delete it in this stage.
+
+"""
