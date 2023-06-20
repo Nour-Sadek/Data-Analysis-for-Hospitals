@@ -107,3 +107,39 @@ Additionally, delete all the empty rows.
 
 """
 
+# Delete all empty rows
+
+all_hospitals_df.dropna(axis=0, how='all', inplace=True)
+
+# Correct all the gender column values to 'f' and 'm' from {'female', 'woman'}
+# and {'male', 'man'} respectively
+
+all_hospitals_df['gender'] = all_hospitals_df['gender'].replace({'female': 'f',
+                                                                 'woman': 'f',
+                                                                 'male': 'm',
+                                                                 'man': 'm'})
+
+# Change all NaN's values in the <all_hospitals_df> 'gender' column
+# corresponding to the prenatal hospital to 'f'
+
+all_hospitals_df.loc[all_hospitals_df.hospital == 'prenatal',
+                                                  'gender'] = \
+    all_hospitals_df.loc[all_hospitals_df.hospital == 'prenatal',
+                                                      'gender'].fillna('f')
+
+# Replace the NaN values in the bmi, diagnosis, blood_test, ecg, ultrasound,
+# mri, xray, children, months columns with zeros
+
+all_hospitals_df[['bmi', 'diagnosis',
+                  'blood_test', 'ecg', 'ultrasound',
+                  'mri', 'xray', 'children',
+                  'months']] = all_hospitals_df[['bmi', 'diagnosis',
+                                                 'blood_test', 'ecg',
+                                                 'ultrasound',
+                                                 'mri', 'xray', 'children',
+                                                 'months']].fillna(0)
+
+# Print the shape of the DataFrame and a random set of 20 rows
+print('A sample of 20 rows from the improved DataFrame where missing values\
+ have been handled: ')
+print(all_hospitals_df.sample(n=20, random_state=30), end='\n\n')
