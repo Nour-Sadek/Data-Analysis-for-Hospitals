@@ -171,3 +171,73 @@ most often (there is the biggest number of t in the blood_test column among all
 the hospitals)? How many blood tests were taken?
 
 """
+
+# 1 - Which hospital has the highest number of patients?
+
+all_hospitals_patients = all_hospitals_df.hospital.value_counts()
+max_num_patients = all_hospitals_df.hospital.value_counts().max()
+highest_count_hosp = all_hospitals_patients[all_hospitals_patients ==
+                                            max_num_patients].index[0]
+
+print('The answer to the 1st question is', highest_count_hosp)
+
+# 2 - What share of the patients in the general hospital suffers from
+# stomach-related issues? Round the result to the third decimal place.
+
+num_general_stomach = all_hospitals_df[(all_hospitals_df.diagnosis ==
+                                        'stomach') & (all_hospitals_df.hospital
+                                                      == 'general')].shape[0]
+total_at_general = all_hospitals_df.hospital.value_counts()['general']
+second_answer = round(num_general_stomach / total_at_general, 3)
+
+print('The answer to the 2nd question is', second_answer)
+
+# 3 - What share of the patients in the sports hospital suffers from
+# dislocation-related issues? Round the result to the third decimal place.
+
+num_sports_dislocation = all_hospitals_df[(all_hospitals_df.diagnosis ==
+                                           'dislocation') &
+                                          (all_hospitals_df.hospital ==
+                                           'sports')].shape[0]
+total_at_sports = all_hospitals_df.hospital.value_counts()['sports']
+third_answer = round(num_sports_dislocation / total_at_sports, 3)
+
+print('The answer to the 3rd question is', third_answer)
+
+# 4 - What is the difference in the median ages of the patients in the general
+# and sports hospitals?
+
+median_age_general = all_hospitals_df[all_hospitals_df.hospital ==
+                                      'general'].age.median()
+median_age_sports = all_hospitals_df[all_hospitals_df.hospital ==
+                                     'sports'].age.median()
+difference = median_age_general - median_age_sports
+
+print('The answer to the 4th question is', difference)
+
+# 5 - After data processing at the previous stages, the blood_test column has
+# three values: t = a blood test was taken, f = a blood test wasn't taken, and
+# 0 = there is no information. In which hospital the blood test was taken the
+# most often (there is the biggest number of t in the blood_test column among
+# all the hospitals)? How many blood tests were taken?
+
+# Creating parallel lists for the hospitals and the corresponding number of
+# blood tests that were taken
+
+all_hospitals = all_hospitals_df.hospital.unique()
+t_blood_test_values = []
+for hospital in all_hospitals:
+    t_blood_test_values.append(all_hospitals_df[(all_hospitals_df.hospital ==
+                                                 hospital) &
+                                                (all_hospitals_df.blood_test
+                                                 == 't')].shape[0])
+
+# Extracting the hospital that did the maximum number of tests and its name
+# from the parallel lists
+
+max_t_blood_tests = max(t_blood_test_values)
+hosp_max_t_blood_tests =\
+    all_hospitals[t_blood_test_values.index(max_t_blood_tests)]
+
+print(f'The answer to the 5th question is \
+{hosp_max_t_blood_tests}, {max_t_blood_tests} blood tests')
