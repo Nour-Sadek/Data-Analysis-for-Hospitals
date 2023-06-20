@@ -81,3 +81,29 @@ all_hospitals_df.drop(columns='Unnamed: 0',
 print('A sample of 20 rows from the merged DataFrame that contains data from all\
  three hospitals:')
 print(all_hospitals_df.sample(n=20), end='\n\n')
+
+"""Stage 3: Improve your dataset
+
+Description
+
+Some cells in our table have NaN as values: the patient gender is not defined in 
+the prenatal hospital, and columns with the results of medical tests have empty 
+values in all three tables. We still cannot commit to the analysis as the 
+statistics are not going to be objective. We have to correct the table for 
+further study.
+
+Objectives
+
+Let's take a closer look at the gender column. It's a big mess: there we have 
+female, male, man, woman. You need to correct the data in this column. The 
+values should be either f or m. Replace the empty gender column values for 
+prenatal patients with f (we can assume that the prenatal treats only women).
+
+The bmi, diagnosis, blood_test, ecg, ultrasound, mri, xray, children, months 
+columns also need to be corrected. Replace the NaN values of the columns above 
+with zeros.
+
+Additionally, delete all the empty rows.
+
+"""
+
