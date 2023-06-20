@@ -143,3 +143,31 @@ all_hospitals_df[['bmi', 'diagnosis',
 print('A sample of 20 rows from the improved DataFrame where missing values\
  have been handled: ')
 print(all_hospitals_df.sample(n=20, random_state=30), end='\n\n')
+
+"""Stage 4: The statistics
+
+Description
+
+You have cleared your dataset of empty rows and values. Some values have also 
+been corrected, and now we can start a comprehensive study of our data. In this 
+stage, we will find the main statistical characteristics of our data, consider 
+data distributions, and so on.
+
+Objectives
+
+Answer the following questions:
+
+1 - Which hospital has the highest number of patients?
+2 - What share of the patients in the general hospital suffers from 
+stomach-related issues? Round the result to the third decimal place.
+3 - What share of the patients in the sports hospital suffers from 
+dislocation-related issues? Round the result to the third decimal place.
+4 - What is the difference in the median ages of the patients in the general 
+and sports hospitals?
+5 - After data processing at the previous stages, the blood_test column has 
+three values: t = a blood test was taken, f = a blood test wasn't taken, and 
+0 = there is no information. In which hospital the blood test was taken the 
+most often (there is the biggest number of t in the blood_test column among all 
+the hospitals)? How many blood tests were taken?
+
+"""
