@@ -1,5 +1,6 @@
 # Imported packages
 import pandas as pd
+import matplotlib.pyplot as plt
 
 """Stage 1: Upload the data
 
@@ -172,6 +173,8 @@ the hospitals)? How many blood tests were taken?
 
 """
 
+print("The answers to Stage 4's questions:", end='\n\n')
+
 # 1 - Which hospital has the highest number of patients?
 
 all_hospitals_patients = all_hospitals_df.hospital.value_counts()
@@ -240,7 +243,7 @@ hosp_max_t_blood_tests =\
     all_hospitals[t_blood_test_values.index(max_t_blood_tests)]
 
 print(f'The answer to the 5th question is \
-{hosp_max_t_blood_tests}, {max_t_blood_tests} blood tests')
+{hosp_max_t_blood_tests}, {max_t_blood_tests} blood tests', end='\n\n')
 
 """Stage 5: Visualize it!
 
@@ -264,3 +267,87 @@ questions. What is the main reason for the gap in values? Why there are two
 peaks, which correspond to the relatively small and big values?
 
 """
+
+print("The answers to Stage 5's questions:", end='\n\n')
+
+# 1 - What is the most common age of a patient among all hospitals? Plot a
+# histogram and choose one of the following age ranges: 0-15, 15-35, 35-55,
+# 55-70, or 70-80.
+
+hospitals = ['general', 'prenatal', 'sports']
+bins = [0, 15, 35, 55, 70, 80]
+data = []
+for hospital in hospitals:
+    ages_data = all_hospitals_df[(all_hospitals_df['hospital'] == hospital)][
+        'age']
+    data.append(ages_data)
+plt.hist(data, bins=bins, label=hospitals)
+plt.title("The distribution of patients' ages in the three hospitals")
+plt.xlabel("Patients' ages")
+plt.ylabel('Number of people')
+plt.legend()
+
+print("The answer to the 1st question: 15-35")
+
+# 2 - What is the most common diagnosis among patients in all hospitals? Create
+# a pie chart.
+
+pie_labels = []
+pie_data = []
+
+for hospital in hospitals:
+    diagnosis_data = \
+    all_hospitals_df[(all_hospitals_df['hospital'] == hospital)][
+        'diagnosis'].value_counts()
+
+    label = list(diagnosis_data.index)
+    pie_labels.append(label)
+
+    diagnoses = list(diagnosis_data)
+    pie_data.append(diagnoses)
+
+fig, ax = plt.subplots(figsize=(8, 6))
+width = 0.3
+radius = 1
+
+for i in range(len(hospitals)):
+    ax.pie(pie_data[i],
+           radius=radius,
+           labeldistance=radius,
+           labels=pie_labels[i],
+           wedgeprops={'width': width})
+    radius = radius - width
+
+plt.title("The diagnoses of patients of the three hospitals\nOuter slice: \
+general\nMiddle slice: prenatal\nInner slice: sports")
+
+print("The answer to the 2nd question: pregnancy")
+
+# 3 - Build a violin plot of height distribution by hospitals. Try to answer
+# the questions. What is the main reason for the gap in values? Why there are
+# two peaks, which correspond to the relatively small and big values?
+
+violin_data = []
+violin_labels = ()
+
+for hospital in hospitals:
+    heights_data = all_hospitals_df[all_hospitals_df['hospital'] == hospital][
+        'height']
+
+    heights = list(heights_data)
+    violin_data.append(heights)
+
+    violin_labels = violin_labels + (hospital,)
+
+fig, axes = plt.subplots()
+plt.violinplot(violin_data)
+
+axes.set_xticks((1, 2, 3))
+axes.set_xticklabels(violin_labels)
+axes.set_ylabel("Heights of patients")
+axes.set_title('Violin plot of height distribution by hospitals')
+
+print("The answer to the 3rd question: It's because people who practice \
+sports are usually much taller than the average population.")
+
+plt.show()
