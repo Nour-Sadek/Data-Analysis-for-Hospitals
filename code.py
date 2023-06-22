@@ -241,3 +241,26 @@ hosp_max_t_blood_tests =\
 
 print(f'The answer to the 5th question is \
 {hosp_max_t_blood_tests}, {max_t_blood_tests} blood tests')
+
+"""Stage 5: Visualize it!
+
+Description
+
+Graphics are arguably the most accessible way to represent the data and its 
+structure. Sometimes, it can help to find the main data patterns and deviations. 
+We will use data visualization methods to conclude our dataset.
+
+Objectives
+
+You need to create data visualization to answer the following questions:
+
+1 - What is the most common age of a patient among all hospitals? Plot a 
+histogram and choose one of the following age ranges: 0-15, 15-35, 35-55, 55-70, 
+or 70-80.
+2 - What is the most common diagnosis among patients in all hospitals? Create a 
+pie chart.
+3 - Build a violin plot of height distribution by hospitals. Try to answer the 
+questions. What is the main reason for the gap in values? Why there are two 
+peaks, which correspond to the relatively small and big values?
+
+"""
