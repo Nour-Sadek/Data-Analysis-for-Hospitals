@@ -1,9 +1,5 @@
 # Data-Analysis-for-Hospitals
 
-### Learning Outcomes:
-Conduct a comprehensive data study using the pandas library: from uploading data 
-and correcting errors in the CSV files to simple data visualization.
-
 ### About
 You know the story. Data is everywhere: texts, images, news, and spreadsheets. 
 It affects our habits and defines our future. The amount of data is growing by 
@@ -12,6 +8,21 @@ required in any line of business. In this project, you will conduct a
 comprehensive study with pandas. You will upload datasets, deal with data 
 omissions and incorrect data filling, find the main statistical characteristics, 
 and visualize your data.
+
+### Learning Outcomes of the Project:
+Conduct a comprehensive data study using the pandas library: from uploading data 
+and correcting errors in the CSV files to simple data visualization.
+
+### Learning Outcomes of Each Stage of the Project:
+_Stage 1_ : Load data from CSV files to the program.
+
+_Stage 2_ : Make a single dataset from several CSV files.
+
+_Stage 3_ : Improve the dataset which may be inconsistent and contain errors.
+
+_Stage 4_ : Use pandas statistics tools to gain insights from data.
+
+_Stage 5_ : Use pandas visualization tools to present the data succinctly.
 
 # General Info
 
